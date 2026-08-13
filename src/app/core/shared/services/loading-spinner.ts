@@ -1,7 +1,7 @@
 import { signal, Service } from '@angular/core';
 
 @Service()
-export class LoadingSpinner {
+export class LoadingSpinnerService {
   isLoading = signal(false);
 
   show() {

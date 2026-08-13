@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import AOS from 'aos';
 import { AuthServices } from './features/auth/services/auth.services';
-import { LoadingSpinner } from './core/shared/services/loading-spinner';
+import { LoadingSpinnerService } from './core/shared/services/loading-spinner';
 import { LoadingSpinnner } from './core/shared/loading-spinner/loading-spinner';
 
 @Component({
@@ -21,7 +21,7 @@ import { LoadingSpinnner } from './core/shared/loading-spinner/loading-spinner';
 export class App implements OnInit {
   private authServices = inject(AuthServices);
 
-  loadingService = inject(LoadingSpinner);
+  loadingService = inject(LoadingSpinnerService);
 
   private router = inject(Router);
 
