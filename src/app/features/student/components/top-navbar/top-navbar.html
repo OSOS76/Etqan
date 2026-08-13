@@ -1,0 +1,23 @@
+<nav class="top-navbar">
+  <div class="navbar-right">
+    <div class="user-menu">
+      <button class="user-menu-btn" type="button">
+        <div class="user-info">
+          <span class="user-name">{{ user()?.name | titlecase }}</span>
+          @if (user()?.role === 'student') {
+            <span class="user-role">طالب</span>
+          }
+
+          @if (user()?.role === 'teacher') {
+            <span class="user-role">مدرس</span>
+          }
+        </div>
+      </button>
+    </div>
+
+    <button class="notification-btn" type="button">
+      <i class="far fa-bell"></i>
+      <span class="notification-badge"></span>
+    </button>
+  </div>
+</nav>

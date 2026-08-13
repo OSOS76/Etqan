@@ -1,0 +1,125 @@
+<div class="profile-page">
+  <div class="container-fluid">
+    <div class="profile-header">
+      <h2 class="page-title">الملف الشخصي</h2>
+      <p class="page-subtitle">إدارة بياناتك الشخصية ومعلومات حسابك</p>
+    </div>
+
+    @if (user) {
+      <div class="profile-layout">
+        <!-- البطاقة الجانبية -->
+        <div class="profile-sidebar">
+          <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <h3 class="sidebar-name">{{ user.name }}</h3>
+          <span class="sidebar-badge">
+            {{ user.role === 'teacher' ? 'مدرس' : 'طالب' }}
+          </span>
+          <div class="sidebar-stats">
+            <div class="stat-item">
+              <span class="stat-value">12</span>
+              <span class="stat-label">كورس</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">8</span>
+              <span class="stat-label">مجموعة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="profile-content">
+          <div class="profile-card personal-card">
+            <div class="card-header">
+              <div class="header-icon">
+                <i class="fas fa-id-card"></i>
+              </div>
+              <div>
+                <h4>البيانات الشخصية</h4>
+                <p>معلومات حسابك الأساسية</p>
+              </div>
+            </div>
+
+            @if (!isEditing) {
+              <button class="btn btn-primary-custom" type="button" (click)="startEditing()">
+                <i class="fas fa-edit me-2"></i>
+                تعديل البيانات
+              </button>
+            }
+
+            <div class="profile-form">
+              <div class="info-row">
+                <!-- الاسم -->
+                <div class="info-item">
+                  <span class="info-label">الاسم</span>
+
+                  @if (isEditing) {
+                    <input
+                      id="schedule"
+                      type="text"
+                      class="form-input"
+                      [(ngModel)]="editData.name"
+                    />
+                  } @else {
+                    <span class="info-value">
+                      {{ user.name }}
+                    </span>
+                  }
+                </div>
+
+                <!-- الإيميل -->
+                <div class="info-item">
+                  <span class="info-label">البريد الإلكتروني</span>
+
+                  <span class="info-value">
+                    {{ user.email }}
+                  </span>
+                </div>
+
+                <!-- الهاتف -->
+                <div class="info-item">
+                  <span class="info-label">رقم الهاتف</span>
+
+                  @if (isEditing) {
+                    <input
+                      id="schedule"
+                      type="text"
+                      class="form-input"
+                      [(ngModel)]="editData.phone"
+                    />
+                  } @else {
+                    <span class="info-value">
+                      {{ user.phone || 'غير مضاف' }}
+                    </span>
+                  }
+                </div>
+
+                <!-- نوع الحساب -->
+                <div class="info-item">
+                  <span class="info-label">نوع الحساب</span>
+
+                  <span class="info-value">
+                    {{ user.role === 'teacher' ? 'مدرس' : 'طالب' }}
+                  </span>
+                </div>
+              </div>
+
+              @if (isEditing) {
+                <div class="form-actions">
+                  <button type="button" class="btn btn-primary-custom" (click)="saveChanges()">
+                    حفظ التعديلات
+                  </button>
+
+                  <button type="button" class="btn btn-light" (click)="isEditing = false">
+                    إلغاء
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

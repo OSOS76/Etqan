@@ -1,12 +1,55 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
+import AOS from 'aos';
+import { AuthServices } from './features/auth/services/auth.services';
+import { LoadingSpinner } from './core/shared/services/loading-spinner';
+import { LoadingSpinnner } from './core/shared/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LoadingSpinnner],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('etqan');
+export class App implements OnInit {
+  private authServices = inject(AuthServices);
+
+  loadingService = inject(LoadingSpinner);
+
+  private router = inject(Router);
+
+  constructor() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loadingService.show();
+      }
+      if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        setTimeout(() => {
+          this.loadingService.hide();
+        }, 1500);
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.authServices.checkAuthState();
+
+    AOS.init({
+      duration: 900,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+    });
+  }
 }

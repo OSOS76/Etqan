@@ -1,0 +1,12 @@
+import { Timestamp } from 'firebase/firestore';
+
+export interface Group {
+  id?: string;
+  name: string;
+  courseId: string;
+  teacherId: string;
+  maxStudents: number;
+  schedule: string;
+  location: string;
+  createdAt: Timestamp;
+}

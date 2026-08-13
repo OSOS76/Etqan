@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+.btn-primary-custom {
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: $radius-lg;
+  padding: 12px 24px;
+  transition: $transition;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.829);
+    background: $primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline-custom {
+  border: 2px solid $primary;
+  color: $primary;
+  border-radius: $radius-lg;
+  background: white;
+  transition: $transition;
+
+  &:hover {
+    background: $primary;
+    color: white;
+  }
+}

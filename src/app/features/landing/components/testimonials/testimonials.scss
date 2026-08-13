@@ -1,0 +1,211 @@
+@use './../../../../../styles/variables.scss' as *;
+
+.testimonials-section {
+  &__header {
+    max-width: 44rem;
+  }
+
+  &__title {
+    color: $text-dark;
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 60px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, $primary, $secondary);
+    }
+  }
+
+  &__subtitle {
+    color: $text-light;
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  &__card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba($border-color, 0.85);
+    border-radius: $radius-xl;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(90deg, $primary 0%, $secondary 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba($secondary, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+      border-color: rgba($primary, 0.25);
+
+      &::before {
+        opacity: 1;
+      }
+
+      .testimonials-section__quote-mark {
+        color: rgba($primary, 0.35);
+        transform: scale(1.15) rotate(-5deg);
+      }
+    }
+  }
+
+  &__quote-mark {
+    color: rgba($primary, 0.15);
+    font-size: 4rem;
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.75rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+
+  &__stars {
+    color: #f59e0b;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+
+    .fa-star {
+      filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
+    }
+  }
+
+  &__quote {
+    border: none;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+
+    p {
+      color: $text-dark;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      font-weight: 500;
+    }
+  }
+
+  &__author {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+  }
+
+  &__avatar {
+    border: 2.5px solid rgba($secondary, 0.7);
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 60px;
+    object-fit: cover;
+    width: 60px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: 0 8px 20px rgba($primary, 0.25);
+    }
+  }
+
+  &__name {
+    color: $text-dark;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  &__grade {
+    color: $primary;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .testimonials-section {
+    &__title {
+      font-size: 2rem;
+
+      &::after {
+        width: 50px;
+        height: 3px;
+      }
+    }
+    &__subtitle {
+      font-size: 1.05rem;
+    }
+    &__card {
+      padding: 2rem 1.75rem;
+    }
+    &__quote-mark {
+      font-size: 3.5rem;
+      top: 1.25rem;
+      left: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .testimonials-section {
+    &__title {
+      font-size: 1.6rem;
+    }
+    &__subtitle {
+      font-size: 0.98rem;
+    }
+    &__card {
+      padding: 1.75rem 1.5rem;
+    }
+    &__quote {
+      p {
+        font-size: 0.98rem;
+      }
+    }
+    &__avatar {
+      height: 52px;
+      width: 52px;
+    }
+    &__name {
+      font-size: 1rem;
+    }
+    &__quote-mark {
+      font-size: 3rem;
+    }
+  }
+}

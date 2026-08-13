@@ -1,0 +1,105 @@
+@if (course) {
+  <section class="course-details">
+    <div class="course-details__hero">
+      <img
+        src="https://picsum.photos/seed/course-details/1200/600"
+        [alt]="course.title"
+        class="course-details__hero-image"
+      />
+      <div class="course-details__hero-overlay"></div>
+      <div class="course-details__hero-content">
+        <div class="course-details__tags">
+          <span class="course-details__tag">
+            {{ course.subject }}
+          </span>
+          <span class="course-details__tag">
+            {{ course.grade }}
+          </span>
+        </div>
+        <h1 class="course-details__title">
+          {{ course.title }}
+        </h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="course-details__layout">
+        <div class="course-details__main">
+          <div class="course-details__card">
+            <div class="course-details__card-header">
+              <div class="course-details__header-icon">
+                <i class="fa-solid fa-chalkboard-user"></i>
+              </div>
+              <div>
+                <h3>عن الدورة</h3>
+                <p>معلومات تفصيلية عن محتوى الدورة</p>
+              </div>
+            </div>
+
+            <div class="course-details__description">
+              <p>
+                {{ course.description }}
+              </p>
+            </div>
+          </div>
+
+          <div class="course-details__info-grid">
+            <div class="course-details__info-card">
+              <div class="info-icon">
+                <i class="fa-solid fa-book"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">المادة</span>
+                <strong class="info-value">{{ course.subject }}</strong>
+              </div>
+            </div>
+
+            <div class="course-details__info-card">
+              <div class="info-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">المرحلة الدراسية</span>
+                <strong class="info-value">{{ course.grade }}</strong>
+              </div>
+            </div>
+
+            <div class="course-details__info-card">
+              <div class="info-icon">
+                <i class="fa-solid fa-user-tie"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">المدرس</span>
+                <strong class="info-value">{{ teacherName || 'غير معروف' }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="course-details__sidebar">
+          <div class="course-details__price-card">
+            <div class="price-header">
+              <span class="price-label">سعر الدورة</span>
+              <div class="price-value">
+                {{ course.price }} <span>جنيه</span>
+              </div>
+            </div>
+            <button type="button" class="course-details__subscribe">
+              اشترك في الدورة
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="course-details__teacher-mini">
+              <div class="teacher-avatar">
+                <i class="fa-solid fa-chalkboard-user"></i>
+              </div>
+              <div>
+                <span class="teacher-label">مدرس الدورة</span>
+                <strong class="teacher-name">{{ teacherName || 'مدرس الدورة' }}</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+}

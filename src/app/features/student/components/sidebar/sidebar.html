@@ -1,0 +1,61 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <span class="logo-text" routerLink="">اتقان</span>
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/dashboard/student"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span class="nav-text">لوحة التحكم</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard/student/my-courses" routerLinkActive="active">
+          <span class="nav-icon"><i class="fas fa-book-open"></i></span>
+          <span class="nav-text">دوراتي</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active">
+          <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
+          <span class="nav-text">الحضور</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active">
+          <span class="nav-icon"><i class="fas fa-users"></i></span>
+          <span class="nav-text">المجموعات</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active">
+          <span class="nav-icon"><i class="fas fa-user"></i></span>
+          <span class="nav-text">الملف الشخصي</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active">
+          <span class="nav-icon"><i class="fas fa-cog"></i></span>
+          <span class="nav-text">الإعدادات</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer" (click)="logout()">
+    <a class="nav-link logout-link" >
+      <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+      <span class="nav-text">تسجيل الخروج</span>
+    </a>
+  </div>
+</aside>

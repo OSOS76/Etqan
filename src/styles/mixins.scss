@@ -1,0 +1,68 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition {
+  transition: 0.3s ease;
+}
+
+@mixin card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+@mixin glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba($border-color, 0.85);
+  border-radius: $radius-xl;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin section-title {
+  color: $text-dark;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+}
+
+@mixin icon-box($size: 68px, $bg: rgba($secondary, 0.2)) {
+  width: $size;
+  height: $size;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, $bg 0%, lighten($bg, 5%) 100%);
+  color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $size * 0.25;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba($secondary, 0.35);
+}

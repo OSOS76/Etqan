@@ -1,0 +1,82 @@
+<section class="add-group-page" (click)="close()">
+  <div class="add-group-card" (click)="$event.stopPropagation()">
+    <h2 class="page-title">{{ groups()? 'تعديل المجموعه' : 'إنشاء مجموعه جديدة' }}</h2>
+    <p class="page-subtitle">أدخل بيانات المجموعة أدناه</p>
+
+    <form class="group-form" [formGroup]="groupform" (ngSubmit)="addGroup()">
+      <!-- اسم المجموعة -->
+      <div class="form-group">
+        <label class="form-label" for="name">اسم المجموعة</label>
+
+        <input
+          id="name"
+          type="text"
+          class="form-input"
+          placeholder="مثال: مجموعة رياضيات الصف الأول"
+          formControlName="name"
+        />
+      </div>
+
+      <!-- الكورس -->
+      <div class="form-group">
+        <label class="form-label" for="course">الدورة</label>
+
+        <select id="course" class="form-select" formControlName="courseId">
+          <option value="" disabled>اختر الدورة</option>
+
+          @for (course of courses(); track course.id) {
+            <option [value]="course.id">{{ course.title }} -{{ course.grade }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- العدد + الموعد -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="maxStudents"> العدد الأقصى للطلاب </label>
+
+          <input
+            id="maxStudents"
+            type="number"
+            class="form-input"
+            formControlName="maxStudents"
+            min="1"
+            placeholder="مثال: 20"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="schedule"> الموعد </label>
+
+          <input
+            id="schedule"
+            type="text"
+            class="form-input"
+            formControlName="schedule"
+            placeholder="مثال: الأحد والثلاثاء 4:00 م"
+          />
+        </div>
+      </div>
+
+      <!-- المكان -->
+      <div class="form-group">
+        <label class="form-label" for="location"> المكان </label>
+
+        <input
+          id="location"
+          type="text"
+          class="form-input"
+          formControlName="location"
+          placeholder="مثال: قاعة 1"
+        />
+      </div>
+
+      <!-- الأزرار -->
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">
+          {{ groups() ? 'حفظ التعديلات' : 'إنشاء المجموعه' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

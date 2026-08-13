@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+  <div class="container">
+    <!-- Logo: Always on the right (RTL) -->
+    <a class="navbar-brand fw-bold fs-3 text-primary-brown me-lg-4" routerLink="/" fragment="hero">
+      <img src="/logo.png" alt="" />
+    </a>
+
+    <!-- Desktop nav: center, mobile: hidden unless collapsed -->
+    <button
+      class="navbar-toggler border-0 shadow-none ms-1"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="تبديل القائمة"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Centered nav & buttons: use flex utility classes -->
+    <div class="collapse navbar-collapse flex-lg-row-reverse" id="navbarNavDropdown">
+      <!-- Nav Pages (centered in desktop by margin auto, full width in mobile) -->
+      <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 gap-lg-3 gap-2 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="hero">الرئيسية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="features">لماذا إتقان؟</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="teachers">المدرسون</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="courses">المواد</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="faq">الأسئلة الشائعة</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/" fragment="contact">تواصل معنا</a>
+        </li>
+      </ul>
+
+      <!-- Auth Buttons (left on desktop, stacked below on mobile) -->
+      @if (!user()) {
+        <div class="d-flex gap-2 mx-lg-3 mt-3 mt-lg-0 flex-lg-row flex-column">
+          <div class="buttons d-flex gap-2 mt-3 mt-lg-0">
+            <a class="btn btn-login" routerLink="/login"> تسجيل الدخول </a>
+
+            <a class="btn btn-register" routerLink="/register"> إنشاء حساب </a>
+          </div>
+        </div>
+      } @else {
+        <div class="d-flex gap-2 mx-lg-3 mt-3 mt-lg-0 flex-lg-row flex-column">
+          <div class="buttons d-flex gap-2 mt-3 mt-lg-0">
+            <a
+              class="btn btn-register"
+              [routerLink]="user()?.role === 'teacher' ? '/dashboard/teacher' : '/dashboard/student'"
+            >
+              لوحة التحكم
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</nav>
+<!-- Scoped styles for this component -->

@@ -1,0 +1,91 @@
+<section class="courses-section section" id="courses" dir="rtl" aria-labelledby="courses-heading">
+  <div class="container">
+    <header class="courses-section__header text-center mx-auto mb-4 mb-lg-5">
+      <h2 id="courses-heading" class="courses-section__title fw-bold mb-3" data-aos="fade-up">
+        استكشف أحدث الكورسات
+      </h2>
+      <p class="courses-section__subtitle mb-0" data-aos="fade-up" data-aos-delay="100">
+        اختر الكورس المناسب وابدأ التعلم مع أفضل المدرسين.
+      </p>
+    </header>
+
+    <nav
+      class="courses-section__filters d-flex flex-wrap justify-content-center gap-2 mb-4 mb-lg-5"
+      aria-label="تصفية الكورسات حسب المادة"
+      data-aos="zoom-in"
+      data-aos-delay="150"
+    >
+      <button type="button" class="courses-section__chip courses-section__chip--active">
+        الكل
+      </button>
+      <button type="button" class="courses-section__chip">الرياضيات</button>
+      <button type="button" class="courses-section__chip">الفيزياء</button>
+      <button type="button" class="courses-section__chip">الكيمياء</button>
+      <button type="button" class="courses-section__chip">الأحياء</button>
+      <button type="button" class="courses-section__chip">اللغة العربية</button>
+      <button type="button" class="courses-section__chip">اللغة الإنجليزية</button>
+    </nav>
+
+    <div class="row g-4 g-lg-5">
+      @for (course of courses; track course.id) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex" data-aos="zoom-in-up" data-aos-delay="0">
+          <article class="courses-section__card w-100">
+            <div class="courses-section__media">
+              <img
+                src="https://picsum.photos/seed/course/640/360"
+                [alt]="course.title"
+                class="courses-section__thumb"
+                width="640"
+                height="360"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="courses-section__content">
+              <h3 class="courses-section__course-title fw-bold mb-2">
+                {{ course.title }}
+              </h3>
+
+              <p class="courses-section__teacher mb-2">
+                <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
+                {{ teacherNames[course.teacherId] || 'مدرس الدورة' }}
+              </p>
+
+              <div class="courses-section__tags mb-3">
+                <span class="courses-section__tag">
+                  {{ course.subject }}
+                </span>
+
+                <span class="courses-section__tag">
+                  {{ course.grade }}
+                </span>
+              </div>
+
+      
+
+              <div class="courses-section__pricing d-flex align-items-center gap-2 mb-3">
+                <span class="courses-section__price courses-section__price--current fw-bold">
+                  {{ course.price }} جنيه
+                </span>
+              </div>
+
+              <button
+                [routerLink]="['/course-details', course.id]"
+                type="button"
+                class="btn btn-outline-custom courses-section__btn w-100 mt-auto"
+              >
+                عرض التفاصيل
+              </button>
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+
+    <div class="courses-section__footer text-center mt-4 mt-lg-5">
+      <a href="#courses" class="btn btn-primary-custom courses-section__cta px-4 py-2">
+        عرض جميع الكورسات
+      </a>
+    </div>
+  </div>
+</section>

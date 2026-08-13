@@ -1,0 +1,57 @@
+@use './../../../../../../styles/variables.scss' as *;
+@use './../../../../../../styles/mixins.scss' as *;
+
+:host {
+  display: block;
+  position: relative;
+  min-height: 100vh;
+  background: $background;
+}
+
+app-top-navbar .top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 260px;
+  height: 72px;
+  z-index: 999;
+}
+
+app-sidebar .sidebar {
+  top: 72px;
+  height: calc(100vh - 72px);
+}
+
+app-your-courses {
+  display: block;
+  margin-right: 260px;
+  margin-top: 72px;
+  min-height: calc(100vh - 72px);
+}
+
+.router {
+  display: block;
+  margin-right: 260px;
+  min-height: calc(100vh - 72px);
+}
+@media (max-width: 991px) {
+  .router {
+    margin-right: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  app-top-navbar .top-navbar {
+    right: 0;
+  }
+
+  app-your-courses {
+    margin-right: 72px;
+  }
+}
+
+@media (max-width: 575px) {
+  app-your-courses {
+    margin-right: 0;
+  }
+}

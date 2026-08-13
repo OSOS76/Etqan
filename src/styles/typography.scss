@@ -1,0 +1,42 @@
+@use 'variables' as *;
+
+body {
+  font-family: "Cairo", Cairo, sans-serif;
+  color: $text-dark;
+  background: $background;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: $text-light;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+a {
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: rgba($primary, 0.2);
+  color: $primary-dark;
+}
+
+:focus-visible {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+  border-radius: $radius-sm;
+}
