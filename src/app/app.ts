@@ -9,38 +9,38 @@ import {
 } from '@angular/router';
 import AOS from 'aos';
 import { AuthServices } from './features/auth/services/auth.services';
-import { LoadingSpinnerService } from './core/shared/services/loading-spinner';
+// import { LoadingSpinnerService } from './core/shared/services/loading-spinner';
 import { LoadingSpinnner } from './core/shared/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoadingSpinnner],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
   private authServices = inject(AuthServices);
 
-  loadingService = inject(LoadingSpinnerService);
+  // loadingService = inject(LoadingSpinnerService);
 
   private router = inject(Router);
 
-  constructor() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.loadingService.show();
-      }
-      if (
-        event instanceof NavigationEnd ||
-        event instanceof NavigationCancel ||
-        event instanceof NavigationError
-      ) {
-        setTimeout(() => {
-          this.loadingService.hide();
-        }, 1500);
-      }
-    });
-  }
+  // constructor() {
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationStart) {
+  //       this.loadingService.show();
+  //     }
+  //     if (
+  //       event instanceof NavigationEnd ||
+  //       event instanceof NavigationCancel ||
+  //       event instanceof NavigationError
+  //     ) {
+  //       setTimeout(() => {
+  //         this.loadingService.hide();
+  //       }, 1500);
+  //     }
+  //   });
+  // }
 
   ngOnInit(): void {
     this.authServices.checkAuthState();

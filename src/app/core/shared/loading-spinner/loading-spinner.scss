@@ -1,4 +1,4 @@
-@import './../../../../styles/variables.scss';
+// @import './../../../../styles/variables.scss';
 
 .loading-overlay {
   position: fixed;
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba($background, 0.92);
+  // background: rgba($background, 0.92);
   backdrop-filter: blur(6px);
 }
 
@@ -33,7 +33,7 @@
   font-family: 'Cairo', 'Tajawal', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: $primary-dark;
+  // color: $primary-dark;
   letter-spacing: 0.02em;
   margin: 0;
 
