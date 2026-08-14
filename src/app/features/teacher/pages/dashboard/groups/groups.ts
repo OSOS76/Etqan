@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { AddGroup } from '../../../components/add-group/add-group';
-import { RouterLink } from '@angular/router';
 import { Course } from '../../../../../core/models/course.model';
 import { AddcourseService } from '../../../services/addcourseservice';
 import { AuthServices } from '../../../../auth/services/auth.services';
@@ -10,7 +9,7 @@ import { Alerts } from '../../../../../core/utils/alerts';
 
 @Component({
   selector: 'app-groups',
-  imports: [AddGroup, RouterLink],
+  imports: [AddGroup],
   templateUrl: './groups.html',
   styleUrl: './groups.scss',
 })

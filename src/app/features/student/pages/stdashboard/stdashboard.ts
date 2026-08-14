@@ -11,7 +11,7 @@ import { TopNavbar } from '../../components/top-navbar/top-navbar';
 
 @Component({
   selector: 'app-stdashboard',
-  imports: [AttendanceCard, CourseCard, Sidebar, StatCard, TopNavbar, RouterOutlet],
+  imports: [Sidebar, TopNavbar, RouterOutlet],
   templateUrl: './stdashboard.html',
   styleUrl: './stdashboard.scss',
 })

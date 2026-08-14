@@ -5,17 +5,15 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { AddCourse } from '../../../components/add-course/add-course';
 import { AddcourseService } from '../../../services/addcourseservice';
 import { AuthServices } from '../../../../auth/services/auth.services';
 import { Course } from '../../../../../core/models/course.model';
 import { Alerts } from '../../../../../core/utils/alerts';
-import { AddGroup } from '../../../components/add-group/add-group';
 
 @Component({
   selector: 'app-your-courses',
-  imports: [RouterLink, AddCourse, AddGroup],
+  imports: [ AddCourse],
   templateUrl: './your-courses.html',
   styleUrl: './your-courses.scss',
 })
