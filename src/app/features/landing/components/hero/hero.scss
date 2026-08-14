@@ -226,20 +226,22 @@
     font-size: 2.3rem;
   }
   .hero-visual {
-    height: 400px;
+    height: 350px;
   }
   .student-svg {
-    max-height: 340px;
-  }
-  .bg-circle-1, .bg-circle-2 {
-    width: 220px;
-    height: 220px;
+    max-height: 280px;
   }
   .floating-icon {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     font-size: 18px;
   }
+  .icon-book { right: 30px; }
+  .icon-laptop { left: 10px; }
+  .icon-graduation { right: 20px; }
+  .icon-pencil { left: 40px; }
+  .icon-light { right: 0px; }
+  .icon-certificate { left: 0px; }
 }
 
 @media (max-width: 575.98px) {
@@ -247,20 +249,12 @@
     font-size: 1.85rem;
   }
   .hero-visual {
-    height: 320px;
+    height: 280px;
   }
   .student-svg {
-    max-height: 280px;
+    max-height: 230px;
   }
   .floating-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 16px;
+    display: none;
   }
-  .icon-book { right: 20px; }
-  .icon-laptop { left: 0; }
-  .icon-graduation { right: 10px; }
-  .icon-pencil { left: 30px; }
-  .icon-light { right: -5px; }
-  .icon-certificate { left: -5px; }
 }
