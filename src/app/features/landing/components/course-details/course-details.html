@@ -1,31 +1,43 @@
 @if (course) {
   <section class="course-details">
+    <!-- Hero -->
     <div class="course-details__hero">
       <img
-        src="https://picsum.photos/seed/course-details/1200/600"
+        src="logo.png"
+
         [alt]="course.title"
         class="course-details__hero-image"
       />
       <div class="course-details__hero-overlay"></div>
-      <div class="course-details__hero-content">
-        <div class="course-details__tags">
-          <span class="course-details__tag">
-            {{ course.subject }}
-          </span>
-          <span class="course-details__tag">
-            {{ course.grade }}
-          </span>
+      <div class="course-details__hero-glow"></div>
+      <div class="container">
+        <div class="course-details__hero-content">
+          <a routerLink="/" class="course-details__back">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span>العودة للكورسات</span>
+          </a>
+          <div class="course-details__tags">
+            <span class="course-details__tag">
+              <i class="fa-solid fa-book"></i>
+              {{ course.subject }}
+            </span>
+            <span class="course-details__tag">
+              <i class="fa-solid fa-graduation-cap"></i>
+              {{ course.grade }}
+            </span>
+          </div>
+          <h1 class="course-details__title">
+            {{ course.title }}
+          </h1>
         </div>
-        <h1 class="course-details__title">
-          {{ course.title }}
-        </h1>
       </div>
     </div>
 
     <div class="container">
       <div class="course-details__layout">
         <div class="course-details__main">
-          <div class="course-details__card">
+          <!-- About -->
+          <div class="course-details__card course-details__description-card">
             <div class="course-details__card-header">
               <div class="course-details__header-icon">
                 <i class="fa-solid fa-chalkboard-user"></i>
@@ -35,14 +47,43 @@
                 <p>معلومات تفصيلية عن محتوى الدورة</p>
               </div>
             </div>
-
             <div class="course-details__description">
-              <p>
-                {{ course.description }}
-              </p>
+              <p>{{ course.description }}</p>
             </div>
           </div>
 
+          <!-- What you'll learn -->
+          <div class="course-details__card course-details__learn-card">
+            <div class="course-details__card-header">
+              <div class="course-details__header-icon">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <div>
+                <h3>ماذا ستتعلم؟</h3>
+                <p>أهداف ومخرجات هذه الدورة</p>
+              </div>
+            </div>
+            <div class="course-details__learn-grid">
+              <div class="course-details__learn-item">
+                <span class="course-details__learn-icon"><i class="fa-solid fa-check"></i></span>
+                <span>فهم أساسيات المادة وتطبيقاتها العملية</span>
+              </div>
+              <div class="course-details__learn-item">
+                <span class="course-details__learn-icon"><i class="fa-solid fa-check"></i></span>
+                <span>حل تمارين وأسئلة متنوعة بأساليب احترافية</span>
+              </div>
+              <div class="course-details__learn-item">
+                <span class="course-details__learn-icon"><i class="fa-solid fa-check"></i></span>
+                <span>الاستعداد للامتحانات بثقة وتركيز</span>
+              </div>
+              <div class="course-details__learn-item">
+                <span class="course-details__learn-icon"><i class="fa-solid fa-check"></i></span>
+                <span>متابعة مستمرة مع المدرس عبر المنصة</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Grid -->
           <div class="course-details__info-grid">
             <div class="course-details__info-card">
               <div class="info-icon">
@@ -53,7 +94,6 @@
                 <strong class="info-value">{{ course.subject }}</strong>
               </div>
             </div>
-
             <div class="course-details__info-card">
               <div class="info-icon">
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -63,7 +103,6 @@
                 <strong class="info-value">{{ course.grade }}</strong>
               </div>
             </div>
-
             <div class="course-details__info-card">
               <div class="info-icon">
                 <i class="fa-solid fa-user-tie"></i>
@@ -76,6 +115,7 @@
           </div>
         </div>
 
+        <!-- Sidebar -->
         <aside class="course-details__sidebar">
           <div class="course-details__price-card">
             <div class="price-header">
@@ -85,8 +125,10 @@
               </div>
             </div>
             <button type="button" class="course-details__subscribe">
-              اشترك في الدورة
-              <i class="fa-solid fa-arrow-left"></i>
+              <span class="subscribe-text">اشترك في الدورة</span>
+              <span class="subscribe-icon">
+                <i class="fa-solid fa-arrow-left"></i>
+              </span>
             </button>
             <div class="course-details__teacher-mini">
               <div class="teacher-avatar">
@@ -100,6 +142,18 @@
           </div>
         </aside>
       </div>
+    </div>
+
+    <!-- Mobile sticky CTA -->
+    <div class="course-details__mobile-cta">
+      <div class="course-details__mobile-price">
+        <span class="course-details__mobile-label">السعر</span>
+        <span class="course-details__mobile-value">{{ course.price }} جنيه</span>
+      </div>
+      <button type="button" class="course-details__subscribe course-details__subscribe--mobile">
+        <span class="subscribe-text">اشترك الآن</span>
+        <span class="subscribe-icon"><i class="fa-solid fa-arrow-left"></i></span>
+      </button>
     </div>
   </section>
 }

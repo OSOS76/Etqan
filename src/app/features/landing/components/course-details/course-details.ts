@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AddcourseService } from '../../../teacher/services/addcourseservice';
 import { AuthServices } from '../../../auth/services/auth.services';
 import { Course } from '../../../../core/models/course.model';
 
 @Component({
   selector: 'app-course-details',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './course-details.html',
   styleUrl: './course-details.scss',
 })
