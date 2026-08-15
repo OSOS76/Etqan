@@ -25,8 +25,8 @@
                 type="button"
                 class="role-option"
                 [class.active]="registerForm.controls.role.value === 'student'"
-                 [attr.aria-pressed]="registerForm.controls.role.value === 'student'"
-                 (click)="selectRole('student')"
+                [attr.aria-pressed]="registerForm.controls.role.value === 'student'"
+                (click)="selectRole('student')"
               >
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>طالب</span>
@@ -36,8 +36,8 @@
                 type="button"
                 class="role-option"
                 [class.active]="registerForm.controls.role.value === 'teacher'"
-                 [attr.aria-pressed]="registerForm.controls.role.value === 'teacher'"
-                 (click)="selectRole('teacher')"
+                [attr.aria-pressed]="registerForm.controls.role.value === 'teacher'"
+                (click)="selectRole('teacher')"
               >
                 <i class="fa-solid fa-chalkboard-user"></i>
                 <span>مدرس</span>
@@ -132,7 +132,43 @@
                   />
                 </div>
               </div>
-              
+              <!-- grade -->
+              <div class="login__group">
+                <div class="grades-checkboxes">
+                  <label class="grade-checkbox">
+                    <input
+                      type="checkbox"
+                      value="الاول الثانوي"
+                      [checked]="isGradeChecked('الاول الثانوي')"
+                      (change)="onGradeChange('الاول الثانوي', $event)"
+                    />
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>الأول الثانوي</span>
+                  </label>
+
+                  <label class="grade-checkbox">
+                    <input
+                      type="checkbox"
+                      value="الثاني الثانوي"
+                      [checked]="isGradeChecked('الثاني الثانوي')"
+                      (change)="onGradeChange('الثاني الثانوي', $event)"
+                    />
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>الثاني الثانوي</span>
+                  </label>
+
+                  <label class="grade-checkbox">
+                    <input
+                      type="checkbox"
+                      value="الثالث الثانوي"
+                      [checked]="isGradeChecked('الثالث الثانوي')"
+                      (change)="onGradeChange('الثالث الثانوي', $event)"
+                    />
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>الثالث الثانوي</span>
+                  </label>
+                </div>
+              </div>
 
               <!-- Bio -->
               <div class="login__group">

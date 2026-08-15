@@ -31,9 +31,9 @@
         <button type="button" class="teachers-section__chip">اللغة العربية</button>
         <button type="button" class="teachers-section__chip">اللغة الإنجليزية</button>
       </nav>
-      @for (item of teachers(); track $index) {
-        <div class="row g-4 g-lg-5">
-          <div class="col-9 mx-auto my-5 col-lg-4 d-flex" data-aos="zoom-in-up" data-aos-delay="0">
+      <div class="row g-4 g-lg-5">
+        @for (item of teachers(); track $index) {
+          <div class="col-9 col-sm-6 col-lg-4  mx-auto my-5 d-flex" data-aos="zoom-in-up" data-aos-delay="0">
             <article class="teachers-section__card w-100">
               <div class="teachers-section__avatar-wrap mx-auto">
                 <img
@@ -45,8 +45,8 @@
                   loading="lazy"
                 />
               </div>
-              <h3 class="teachers-section__name fw-bold text-center mb-1">{{item.name}} </h3>
-              <p class="teachers-section__subject text-center mb-3">{{item.subject}}</p>
+              <h3 class="teachers-section__name fw-bold text-center mb-1">{{ item.name }}</h3>
+              <p class="teachers-section__subject text-center mb-3">{{ item.subject }}</p>
               <div
                 class="teachers-section__rating d-flex align-items-center justify-content-center gap-1 mb-3"
               >
@@ -80,8 +80,8 @@
               </a>
             </article>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
   </section>
 }

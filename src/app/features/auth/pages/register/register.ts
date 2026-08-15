@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { passwordMatchValidator } from '../../../../core/validators/password-match.validator';
@@ -39,7 +39,8 @@ export class Register {
       subject: [''],
       bio: ['', Validators.minLength(10)],
       image: [''],
-      experienceYears: [0],
+      experienceYears: [],
+      grades: [[] as string[]],
     },
     {
       validators: passwordMatchValidator(),
@@ -55,6 +56,7 @@ export class Register {
     const bio = this.registerForm.controls.bio;
     const image = this.registerForm.controls.image;
     const experienceYears = this.registerForm.controls.experienceYears;
+    const grads = this.registerForm.controls.grades;
 
     if (role === 'teacher') {
       subject.setValidators(Validators.required);
@@ -62,19 +64,40 @@ export class Register {
       bio.setValidators([Validators.required, Validators.minLength(10)]);
 
       image.setValidators(Validators.required);
+
       experienceYears.setValidators([Validators.required, Validators.min(0)]);
 
+      grads.setValidators([Validators.required, Validators.minLength(1)]);
     } else {
       subject.clearValidators();
       bio.clearValidators();
       image.clearValidators();
       experienceYears.clearValidators();
+      grads.clearValidators();
     }
 
     subject.updateValueAndValidity();
     bio.updateValueAndValidity();
     image.updateValueAndValidity();
     experienceYears.updateValueAndValidity();
+    grads.updateValueAndValidity();
+  }
+
+  onGradeChange(grade: string, event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    const currentGrades = this.registerForm.controls.grades.value as string[];
+
+    if (checked) {
+      this.registerForm.controls.grades.setValue([...currentGrades, grade]);
+    } else {
+      this.registerForm.controls.grades.setValue(currentGrades.filter((g) => g !== grade));
+    }
+    this.registerForm.controls.grades.markAsTouched();
+  }
+
+  isGradeChecked(grade: string): boolean {
+    const currentGrades = this.registerForm.controls.grades.value as string[];
+    return currentGrades.includes(grade);
   }
 
   private authServices = inject(AuthServices);
@@ -85,7 +108,6 @@ export class Register {
       return;
     }
     try {
-      // const { name, email, phone, password, role } = this.registerForm.value
       const formValue = this.registerForm.getRawValue();
 
       const userCredential = await this.authServices.register(formValue.email, formValue.password);
@@ -94,12 +116,14 @@ export class Register {
         email: formValue.email,
         phone: formValue.phone,
         role: formValue.role as 'student' | 'teacher',
+        grades: formValue.grades,
       };
       if (formValue.role === 'teacher') {
         userData.subject = formValue.subject;
         userData.bio = formValue.bio;
         userData.image = formValue.image;
         userData.experienceYears = formValue.experienceYears;
+        userData.grades = formValue.grades;
       }
       await this.authServices.saveUserData(userCredential.user.uid, userData);
 
