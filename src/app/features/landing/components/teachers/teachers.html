@@ -37,8 +37,8 @@
             <article class="teachers-section__card w-100">
               <div class="teachers-section__avatar-wrap mx-auto">
                 <img
-                  src="https://i.pravatar.cc/150?img=12"
-                  alt="{{ teachers.name }}"
+                  [src]="item.image"
+                  alt="{{ item.name }}"
                   class="teachers-section__avatar"
                   width="120"
                   height="120"
@@ -46,7 +46,7 @@
                 />
               </div>
               <h3 class="teachers-section__name fw-bold text-center mb-1">{{item.name}} </h3>
-              <p class="teachers-section__subject text-center mb-3">الرياضيات</p>
+              <p class="teachers-section__subject text-center mb-3">{{item.subject}}</p>
               <div
                 class="teachers-section__rating d-flex align-items-center justify-content-center gap-1 mb-3"
               >

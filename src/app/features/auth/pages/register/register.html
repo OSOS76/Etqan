@@ -16,6 +16,34 @@
             <p class="login__subtitle mb-0">سجل الآن للوصول إلى جميع الكورسات والمدرسين.</p>
             <app-breadcrumbs></app-breadcrumbs>
           </div>
+          <!-- Account Type -->
+          <div class="login__group">
+            <label>نوع الحساب</label>
+
+            <div class="role-switch">
+              <button
+                type="button"
+                class="role-option"
+                [class.active]="registerForm.controls.role.value === 'student'"
+                 [attr.aria-pressed]="registerForm.controls.role.value === 'student'"
+                 (click)="selectRole('student')"
+              >
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>طالب</span>
+              </button>
+
+              <button
+                type="button"
+                class="role-option"
+                [class.active]="registerForm.controls.role.value === 'teacher'"
+                 [attr.aria-pressed]="registerForm.controls.role.value === 'teacher'"
+                 (click)="selectRole('teacher')"
+              >
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>مدرس</span>
+              </button>
+            </div>
+          </div>
 
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <!-- Name -->
@@ -88,6 +116,73 @@
                 </p>
               }
             </div>
+            @if (registerForm.controls.role.value === 'teacher') {
+              <!-- Subject -->
+              <div class="login__group">
+                <label>المادة</label>
+
+                <div class="input-box">
+                  <i class="fa-solid fa-book"></i>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="مثال: الرياضيات"
+                    formControlName="subject"
+                  />
+                </div>
+              </div>
+              
+
+              <!-- Bio -->
+              <div class="login__group">
+                <label>نبذة عنك</label>
+
+                <div class="input-box">
+                  <i class="fa-solid fa-pen"></i>
+
+                  <textarea
+                    class="form-control"
+                    placeholder="اكتب نبذة عن نفسك وخبرتك التدريسية"
+                    formControlName="bio"
+                    rows="3"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Experience -->
+              <div class="login__group">
+                <label>سنوات الخبرة</label>
+
+                <div class="input-box">
+                  <i class="fa-solid fa-briefcase"></i>
+
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="مثال: 5"
+                    formControlName="experienceYears"
+                    min="0"
+                  />
+                </div>
+              </div>
+
+              <!-- Image -->
+              <div class="login__group">
+                <label>رابط الصورة</label>
+
+                <div class="input-box">
+                  <i class="fa-solid fa-image"></i>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="رابط صورة المدرس"
+                    formControlName="image"
+                  />
+                </div>
+              </div>
+            }
 
             <!-- Phone -->
             <div class="login__group">
@@ -120,32 +215,6 @@
               ) {
                 <p class="error-msg text-danger">
                   <i class="fa-solid fa-circle-exclamation me-1"></i> رقم الهاتف غير صحيح (11 رقم)
-                </p>
-              }
-            </div>
-
-            <!-- role -->
-            <div class="login__group">
-              <label>الدور</label>
-              <div
-                class="input-box"
-                [class.is-invalid]="
-                  registerForm.controls['role'].touched && registerForm.controls['role'].invalid
-                "
-              >
-                <i class="fa-solid fa-user"></i>
-                <select class="form-control" formControlName="role">
-                  <option value="">اختر الدور</option>
-                  <option value="student">طالب</option>
-                  <option value="teacher">معلم</option>
-                </select>
-              </div>
-              @if (
-                registerForm.controls['role'].touched &&
-                registerForm.controls['role'].errors?.['required']
-              ) {
-                <p class="error-msg text-danger">
-                  <i class="fa-solid fa-circle-exclamation me-1"></i> هذا الحقل مطلوب
                 </p>
               }
             </div>
