@@ -11,6 +11,7 @@ import AOS from 'aos';
 import { AuthServices } from './features/auth/services/auth.services';
 import { LoadingSpinnerServicess } from './core/shared/services/loading-spinner';
 import { Loading } from './core/shared/loading/loading';
+import { BreadcrumbsServise } from './core/shared/services/breadcrumbs-servise';
 
 @Component({
   selector: 'app-root',
@@ -45,7 +46,7 @@ export class App implements OnInit {
       ) {
         setTimeout(() => {
           this.loadingService.hide();
-        }, 1500); 
+        }, 1500);
       }
     });
   }

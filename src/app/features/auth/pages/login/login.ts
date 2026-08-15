@@ -4,10 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../services/auth.services';
 import { UserService } from '../../../../core/services/user-service';
 import { Alerts } from '../../../../core/utils/alerts';
+import { Breadcrumbs } from "../../../../core/shared/breadcrumbs/breadcrumbs";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, Breadcrumbs],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

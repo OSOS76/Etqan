@@ -1,0 +1,15 @@
+<nav class="breadcrumbs" aria-label="مسار الصفحة">
+  @for (breadcrumb of breadcrumbs(); track breadcrumb.url; let last = $last) {
+    @if (!last) {
+      <a [routerLink]="breadcrumb.url">
+        {{ breadcrumb.label }}
+      </a>
+
+      <span class="separator">/</span>
+    } @else {
+      <span class="current">
+        {{ breadcrumb.label }}
+      </span>
+    }
+  }
+</nav>

@@ -2,30 +2,11 @@
   <section class="course-details">
     <!-- Hero -->
     <div class="course-details__hero">
-      <img
-        src="logo.png"
-
-        [alt]="course.title"
-        class="course-details__hero-image"
-      />
+      <img src="logo.png" [alt]="course.title" class="course-details__hero-image" />
       <div class="course-details__hero-overlay"></div>
       <div class="course-details__hero-glow"></div>
       <div class="container">
         <div class="course-details__hero-content">
-          <a routerLink="/" class="course-details__back">
-            <i class="fa-solid fa-arrow-right"></i>
-            <span>العودة للكورسات</span>
-          </a>
-          <div class="course-details__tags">
-            <span class="course-details__tag">
-              <i class="fa-solid fa-book"></i>
-              {{ course.subject }}
-            </span>
-            <span class="course-details__tag">
-              <i class="fa-solid fa-graduation-cap"></i>
-              {{ course.grade }}
-            </span>
-          </div>
           <h1 class="course-details__title">
             {{ course.title }}
           </h1>
@@ -36,6 +17,8 @@
     <div class="container">
       <div class="course-details__layout">
         <div class="course-details__main">
+          <app-breadcrumbs></app-breadcrumbs>
+
           <!-- About -->
           <div class="course-details__card course-details__description-card">
             <div class="course-details__card-header">
@@ -120,9 +103,7 @@
           <div class="course-details__price-card">
             <div class="price-header">
               <span class="price-label">سعر الدورة</span>
-              <div class="price-value">
-                {{ course.price }} <span>جنيه</span>
-              </div>
+              <div class="price-value">{{ course.price }} <span>جنيه</span></div>
             </div>
             <button type="button" class="course-details__subscribe">
               <span class="subscribe-text">اشترك في الدورة</span>

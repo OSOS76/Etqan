@@ -6,10 +6,11 @@ import { AuthServices } from '../../services/auth.services';
 import { RouterLink, Router } from '@angular/router';
 import { Alerts } from '../../../../core/utils/alerts';
 import { User } from '../../../../core/models/user.model';
+import { Breadcrumbs } from "../../../../core/shared/breadcrumbs/breadcrumbs";
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, Breadcrumbs],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })

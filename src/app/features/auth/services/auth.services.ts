@@ -12,6 +12,8 @@ import { UserService } from '../../../core/services/user-service';
 
 @Service({})
 export class AuthServices {
+
+
   saveUserData(uid: string, userData: User) {
     const userRef = doc(db, 'users', uid);
     return setDoc(userRef, userData);
@@ -62,4 +64,5 @@ export class AuthServices {
       });
     });
   }
+
 }
