@@ -15,5 +15,6 @@ export class Teachers {
 
   async ngOnInit() {
     await this.teachersService.getTeachers();
-  }
+}
+
 }
